@@ -1,0 +1,31 @@
+import java.io.*; 
+  
+class Solution { 
+    public static void createCombo(List<String> arr, int r, List<String> current,List<List<String>> result,int start){ 
+        if(current.size()==r){
+            result.add(current);
+            System.out.println(current);
+            return;
+        }
+        for(int i=start;i<arr.size();i++){
+            current.add(arr.get(i));
+            createCombo(arr,r,current,result,i+1);
+            current.remove(current.size()-1);
+            
+        }
+        return;
+    } 
+
+    public static void main(String[] args) 
+    { 
+        List<String> arr = new ArrayList<String>();
+        arr.add("Hello");
+        arr.add("World");
+        arr.add("Good");
+        arr.add("Day");
+        List<List<String>> result= new ArrayList<>(); 
+        int r = 2; 
+        List<String> current= new ArrayList<String>();
+        createCombo(arr, r, current,result,0); 
+    } 
+}
